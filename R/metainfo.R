@@ -32,7 +32,7 @@
 #' \dontrun{
 #' tkn = keyring::key_get("waqi_api")
 #'
-#' deu = raster::getData(country = "DEU", level = 0)
+#' deu = raster::getData(country = "DEU", level = 0, path = raster::tmpDir())
 #' stn = inventory(deu, token = tkn)
 #'
 #' nfo = metainfo(stn, token = tkn)

@@ -18,7 +18,7 @@
 #' @examples
 #' \dontrun{
 #' ## spatial extent: bavaria
-#' deu = raster::getData(country = "DEU", level = 1)
+#' deu = raster::getData(country = "DEU", level = 1, path = raster::tmpDir())
 #' bay = subset(deu, NAME_1 == "Bayern")
 #'
 #' ## api token

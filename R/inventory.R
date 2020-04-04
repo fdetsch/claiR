@@ -18,7 +18,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' deu = raster::getData(country = "DEU", level = 0)
+#' deu = raster::getData(country = "DEU", level = 0, path = raster::tmpDir())
 #' stn = inventory(deu, token = keyring::key_get("waqi_api"))
 #'
 #' library(mapview)
