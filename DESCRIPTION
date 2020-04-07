@@ -1,8 +1,8 @@
-Package: WAQI
+Package: claiR
 Type: Package
-Title: World Air Quality Index Project Data Retrieval
-Version: 1.2.2
-Date: 2019-04-09
+Title: Assessment of Air Cleanliness using Open Data
+Version: 0.0.1
+Date: 2019-04-07
 Author: Florian Detsch
 Maintainer: Florian Detsch <fdetsch@web.de>
 Description: Access real-time data through the World Air Quality Index (WAQI) 

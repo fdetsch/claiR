@@ -1,11 +1,11 @@
-#' World Air Quality Index Project Data Retrieval
+#' Assessment of Air Cleanliness using Open Data
 #'
 #' Access real-time data through the World Air Quality Index (WAQI) project's
 #' API.
 #'
-#' @name WAQI-package
+#' @name claiR-package
 #' @docType package
-#' @title World Air Quality Index Project Data Retrieval
+#' @title Assessment of Air Cleanliness using Open Data
 #' @author Florian Detsch
 #' \cr
 #' \cr
