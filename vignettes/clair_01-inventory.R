@@ -19,7 +19,7 @@ library(mapview)
 #' ### **1 Coarse geolocation query: Hesse**
 ### . hesse ----
 
-de1 = raster::getData(country = "DEU", level = 1, path = "inst/extdata")
+de1 = raster::getData(country = "DEU", level = 1, path = raster::tmpDir())
 hsn = subset(de1, NAME_1 == "Hessen")
 
 stn1 = inventory(hsn, token = keyring::key_get("waqi_api"))
@@ -31,7 +31,7 @@ m1
 #' ### **2 Fine geolocation query: Marburg-Biedenkopf**
 ### . marburg-biedenkopf ----
 
-de2 = raster::getData(country = "DEU", level = 2, path = "inst/extdata")
+de2 = raster::getData(country = "DEU", level = 2, path = raster::tmpDir())
 mrb = subset(de2, grepl("Marburg", NAME_2))
 
 stn2 = inventory(mrb, token = keyring::key_get("waqi_api"))
