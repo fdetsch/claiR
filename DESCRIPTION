@@ -1,7 +1,7 @@
 Package: claiR
 Type: Package
 Title: Assessment of Air Cleanliness using Open Data
-Version: 0.0.1
+Version: 0.1.0
 Date: 2019-04-07
 Author: Florian Detsch
 Maintainer: Florian Detsch <fdetsch@web.de>
