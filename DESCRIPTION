@@ -23,4 +23,4 @@ Imports:
     RCurl,
     rgeos,
     stats
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
