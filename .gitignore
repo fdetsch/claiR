@@ -20,6 +20,9 @@
 # RStudio files
 .Rproj.user/
 
+# downloaded gadm files
+inst/extdata/gadm*
+
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
