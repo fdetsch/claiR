@@ -11,36 +11,66 @@
 #' ---
 #+ setup, include=FALSE
 knitr::opts_chunk[['set']](collapse=FALSE, message=FALSE, warning=FALSE, prompt=FALSE)
-#+ libs, echo=FALSE
 
 ## status message
 cat("Run started at", format(Sys.time(),"%Y-%m-%d %H:%M:%S %Z"), "\n\n")
 
 
-### ENVIRONMENT ====
+## ENVIRONMENT ====
 
-## packages
+### packages ----
+
 library(raster)
 library(claiR)
 
 
-### STATION RETRIEVAL ====
+### parallel backend ----
+
+library(parallel)
+
+cl = makePSOCKcluster(
+  detectCores() - 1L
+)
+
+
+## STATION RETRIEVAL ====
+
+### aoi ----
 
 ## target spatial extent
 deu = getData(
   country = "DEU"
   , level = 2
-  , path = "inst/extdata" # tmpDir()
+  , path = "inst/extdata"
 )
 
+
+### waqi token ----
+
 ## retrieve stations per state
-stn = lapply(
-  1:length(deu)
+token = keyring::key_get(
+  "waqi_api"
+)
+
+clusterExport(
+  cl
+  , "token"
+)
+
+
+### waqi dl ----
+
+stn = parLapply(
+  cl
+  , split(
+    deu
+    , f = deu$GID_2
+  )
   , function(i) {
     tmp = try(
-      inventory(
-        deu[i, ]
-        , token = keyring::key_get("waqi_api")
+      claiR::inventory(
+        i
+        , token = token
       )
       , silent = TRUE
     )
@@ -60,6 +90,17 @@ stn = mapedit:::combine_list_of_sf(
     , stn
   )
 )
+
+## display
+stn$aqi = as.numeric(
+  stn$aqi
+)
+mapview::mapview(
+  stn["aqi"]
+)
+
+
+### inventory update ----
 
 stn = stn[, -2]
 
